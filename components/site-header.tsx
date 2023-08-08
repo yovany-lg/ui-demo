@@ -1,8 +1,12 @@
-import { cn } from "@/lib/utils"
-import Image from "next/image"
-import Link from "next/link"
+"use client";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function MainNav() {
+  const pathname = usePathname();
+
   return (
     <div className="flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -16,18 +20,42 @@ function MainNav() {
         <span className="font-medium">App</span>
       </Link>
       <nav className="flex items-center space-x-6 text-sm font-medium">
-        <Link href="/about" className={cn("transition-colors hover:text-foreground/80")}>
+        <Link
+          href="/about"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname.startsWith("/about")
+              ? "text-foreground/"
+              : "text-foreground/60"
+          )}
+        >
           About us
         </Link>
-        <Link href="/services" className={cn("transition-colors hover:text-foreground/80")}>
+        <Link
+          href="/services"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname.startsWith("/services")
+              ? "text-foreground/"
+              : "text-foreground/60"
+          )}          
+        >
           Our services
         </Link>
-        <Link href="/contact" className={cn("transition-colors hover:text-foreground/80")}>
+        <Link
+          href="/contact"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname.startsWith("/contact")
+              ? "text-foreground/"
+              : "text-foreground/60"
+          )}
+        >
           Contact us
         </Link>
       </nav>
     </div>
-  )
+  );
 }
 
 export function SiteHeader() {
@@ -37,5 +65,5 @@ export function SiteHeader() {
         <MainNav />
       </div>
     </header>
-  )
+  );
 }
