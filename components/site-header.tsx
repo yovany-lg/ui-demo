@@ -3,7 +3,7 @@ import Link from "next/link"
 
 function MainNav() {
   return (
-    <div>
+    <div className="flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <Image
           src="/assets/logo-simple.svg"
@@ -14,6 +14,17 @@ function MainNav() {
         />
         <span className="font-medium">App</span>
       </Link>
+      <nav className="flex items-center space-x-6 text-sm">
+        <Link href="/about">
+          About us
+        </Link>
+        <Link href="/services">
+          Our services
+        </Link>
+        <Link href="/contact">
+          Contact us
+        </Link>
+      </nav>
     </div>
   )
 }
