@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 function MainNav() {
   const pathname = usePathname();
@@ -61,8 +62,9 @@ function MainNav() {
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
-      <div className="container flex h-14 items-center">
+      <div className="container flex h-14 items-center justify-between">
         <MainNav />
+        <ThemeToggle />
       </div>
     </header>
   );
